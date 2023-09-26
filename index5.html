@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Cambio</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script>
+        function muestraOpcion(){
+            var opciones = document.getElementsByName("eleccion");
+            console.log(opciones);
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    alert(opciones[i].value);
+                }
+            }
+        }
+        function cambio(){
+            var num1 = parseInt(document.getElementById("num1").value);
+            var eleccion = document.querySelector('input[name="eleccion"]:checked').value;
+            var resultado = 0;
+            var cambiodolar=0.27;
+            var cambioeuro=0.25;
+            if (eleccion === "dolar") {
+                resultado = num1 * cambiodolar;
+                alert(num1 + " soles son " + resultado + " euros.");
+            } else if (eleccion === "euro") {
+                resultado = num1 * cambioeuro;
+                alert(num1 + " soles son " + resultado + " dólares.");
+            } else {
+                alert("Selecciona una opción válida.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="todo">
+        <p>CASA DE CAMBIO</p>
+        <p>Seleccionar moneda a enviar:</p>
+    <input type="radio" name="eleccion" value="dolar" checked onclick="muestraOpcion()">Dólar
+    <input type="radio" name="eleccion" value="euro" onclick="muestraOpcion()">Euro <br>
+    <p>Ingrese monto:</p>
+    <form>
+        <input type="number" id="num1"><br><br>
+        <button type="button" onclick="cambio()">Cotizar</button>
+    </form>
+    </div>
+</body>
+</html>
